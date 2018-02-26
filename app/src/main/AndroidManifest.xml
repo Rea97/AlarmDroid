@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".DriverActivity"></activity>
+        <activity android:name=".DriverActivity" />
+        <activity android:name=".AlertsListActivity"></activity>
     </application>
 
 </manifest>

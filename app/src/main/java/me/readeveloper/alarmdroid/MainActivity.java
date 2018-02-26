@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void showAlertsList(View view) {
+        Intent intent = new Intent(this, AlertsListActivity.class);
+        startActivity(intent);
+    }
+
     public void showRobotVision(View view) {
         Intent intent = new Intent(this, DriverActivity.class);
         startActivity(intent);

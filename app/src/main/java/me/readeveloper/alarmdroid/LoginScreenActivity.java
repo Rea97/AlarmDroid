@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
-    private String defaultEmail = "oziel@test.com";
-    private String defaultPassword = "secret";
+    private String defaultEmail = "test@alarmdroid.com";
+    private String defaultPassword = "12345";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
