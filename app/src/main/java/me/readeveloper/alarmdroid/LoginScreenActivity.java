@@ -25,7 +25,9 @@ public class LoginScreenActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         if (email.equals(this.defaultEmail) && password.equals(this.defaultPassword)) {
-            // redirect to another activity
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return;
         }
         Toast.makeText(this, "Credenciales inválidas.", Toast.LENGTH_LONG).show();
     }
