@@ -28,6 +28,7 @@
         android:id="@+id/driveRobotButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="showRobotVision"
         android:text="CONDUCIR ROBOT"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="408dp" />
