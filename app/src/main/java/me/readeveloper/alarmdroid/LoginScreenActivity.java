@@ -15,15 +15,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+
+import me.readeveloper.alarmdroid.models.ApiToken;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
     private String defaultEmail = "test@alarmdroid.com";
     private String defaultPassword = "12345";
     private String url = "https://alarmdroid.herokuapp.com/api/login";
+    private ApiToken apiToken = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +51,10 @@ public class LoginScreenActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Gson gson = new Gson();
                         Log.i("Response", response);
+                        apiToken = gson.fromJson(response, ApiToken.class);
+                        Log.i("Api Token", apiToken.toString());
                     }
                 },
                 new Response.ErrorListener() {
