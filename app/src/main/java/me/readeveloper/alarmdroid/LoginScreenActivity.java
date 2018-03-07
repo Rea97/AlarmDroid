@@ -46,24 +46,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
-                this.url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Gson gson = new Gson();
-                        Log.i("Response", response);
-                        apiToken = gson.fromJson(response, ApiToken.class);
-                        Log.i("Api Token", apiToken.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", "Error al hacer request.", error);
-                        Log.e("VolleyError", error.getMessage(), error.getCause());
-                    }
-                }
+                Request.Method.POST, this.url, new LoginResponseHandler(), new LoginErrorHandler()
         ) {
             @Override
             protected Map<String,String> getParams(){
@@ -81,13 +64,37 @@ public class LoginScreenActivity extends AppCompatActivity {
                 return params;
             }
         };
+        
         queue.add(stringRequest);
+    }
 
-        if (email.equals(this.defaultEmail) && password.equals(this.defaultPassword)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            return;
+    private void dispatchMainActivityIntent() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private class LoginResponseHandler implements Response.Listener<String> {
+        @Override
+        public void onResponse(String response) {
+            Gson gson = new Gson();
+
+            apiToken = gson.fromJson(response, ApiToken.class);
+
+            if (apiToken.toString() != null) {
+                dispatchMainActivityIntent();
+            }
         }
-        Toast.makeText(this, "Credenciales inválidas.", Toast.LENGTH_LONG).show();
+    }
+
+    private class LoginErrorHandler implements Response.ErrorListener {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.e("ErrorResponse", "Error on request.", error);
+            Toast.makeText(
+                    LoginScreenActivity.this,
+                    "Credenciales inválidas.",
+                    Toast.LENGTH_LONG
+            ).show();
+        }
     }
 }
