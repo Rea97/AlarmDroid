@@ -1,39 +1,31 @@
 package me.readeveloper.alarmdroid;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
+import android.widget.EditText;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 
+import com.google.gson.Gson;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.android.volley.toolbox.StringRequest;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 import me.readeveloper.alarmdroid.models.ApiToken;
 
 public class LoginScreenActivity extends AppCompatActivity {
-
-    private String defaultEmail = "test@alarmdroid.com";
-    private String defaultPassword = "12345";
-    private String url = "https://alarmdroid.herokuapp.com/api/login";
-    private ApiToken apiToken = null;
     private final String SP_FILENAME = "alarmdroid.xml";
+    private final String LOGIN_URL = "https://alarmdroid.herokuapp.com/api/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +51,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(
-                Request.Method.POST, this.url, new LoginResponseHandler(), new LoginErrorHandler()
+                Request.Method.POST, LOGIN_URL, new LoginResponseHandler(), new LoginErrorHandler()
         ) {
             @Override
             protected Map<String,String> getParams(){
@@ -100,7 +92,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         public void onResponse(String response) {
             Gson gson = new Gson();
 
-            apiToken = gson.fromJson(response, ApiToken.class);
+            ApiToken apiToken = gson.fromJson(response, ApiToken.class);
 
             if (apiToken.toString() != null) {
                 storeApiToken(apiToken.toString());
