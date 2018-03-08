@@ -1,6 +1,8 @@
 package me.readeveloper.alarmdroid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,11 +33,22 @@ public class LoginScreenActivity extends AppCompatActivity {
     private String defaultPassword = "12345";
     private String url = "https://alarmdroid.herokuapp.com/api/login";
     private ApiToken apiToken = null;
+    private final String SP_FILENAME = "alarmdroid.xml";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("api_token", null);
+        if (token != null) {
+            this.dispatchMainActivityIntent();
+        }
     }
 
     public void login(View view) {
@@ -64,13 +77,22 @@ public class LoginScreenActivity extends AppCompatActivity {
                 return params;
             }
         };
-        
+
         queue.add(stringRequest);
     }
 
     private void dispatchMainActivityIntent() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void storeApiToken(String apiToken) {
+        SharedPreferences sharedPreferences = getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("api_token", apiToken);
+
+        editor.apply();
     }
 
     private class LoginResponseHandler implements Response.Listener<String> {
@@ -81,6 +103,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             apiToken = gson.fromJson(response, ApiToken.class);
 
             if (apiToken.toString() != null) {
+                storeApiToken(apiToken.toString());
                 dispatchMainActivityIntent();
             }
         }
