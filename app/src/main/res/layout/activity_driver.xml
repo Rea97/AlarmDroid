@@ -6,63 +6,88 @@
     android:layout_height="match_parent"
     tools:context="me.readeveloper.alarmdroid.DriverActivity">
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="22dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="21dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="35dp"
-        android:text="Visión del robot"
+        android:text="@string/vision"
+        android:textColor="@color/primary_text"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adelante"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/button4" />
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="214dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="26dp"
-        android:text="ATRAS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button4" />
+    </WebView>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DERECHA"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+    <ImageButton
+        android:id="@+id/ControlIzq"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/driver_controls"
+        android:contentDescription="@string/action_turn_left"
+        app:layout_constraintBottom_toBottomOf="@+id/ControlAtras"
+        app:layout_constraintEnd_toStartOf="@+id/ControlAvanzar"
+        app:layout_constraintTop_toTopOf="@+id/ControlAvanzar"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:text="IZQUIERDA"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageButton
+        android:id="@+id/ControlAvanzar"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/driver_controls"
+        android:contentDescription="@string/action_move_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webView"
+        app:srcCompat="@drawable/ic_keyboard_arrow_up_black" />
+
+    <ImageButton
+        android:id="@+id/ControlDer"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/driver_controls"
+        android:contentDescription="@string/action_turn_right"
+        app:layout_constraintBottom_toBottomOf="@+id/ControlAtras"
+        app:layout_constraintStart_toEndOf="@+id/ControlAvanzar"
+        app:layout_constraintTop_toTopOf="@+id/ControlAvanzar"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black" />
+
+    <ImageButton
+        android:id="@+id/ControlAtras"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/driver_controls"
+        android:contentDescription="@string/action_go_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ControlAvanzar"
+        app:srcCompat="@drawable/ic_keyboard_arrow_down_black" />
+
 </android.support.constraint.ConstraintLayout>
