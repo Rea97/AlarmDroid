@@ -2,6 +2,9 @@ package me.readeveloper.alarmdroid;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class AlertsListActivity extends AppCompatActivity {
 
@@ -9,5 +12,26 @@ public class AlertsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_list);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.appmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id==R.id.op1) {
+            Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
+        } else if (id==R.id.op2) {
+            Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+        } else if (id==R.id.op3) {
+            Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
