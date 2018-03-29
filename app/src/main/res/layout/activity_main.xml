@@ -10,34 +10,54 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Últimas alertas"
+        android:layout_marginTop="32dp"
+        android:text="@string/last_alerts"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textColor="@color/primary_text"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/seeAllButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="21dp"
+        android:layout_width="0dp"
+        android:layout_height="86dp"
+        android:background="@color/icons"
+        android:drawableTop="@drawable/ic_error_outline_black"
+        android:elevation="@dimen/activity_horizontal_margin"
         android:onClick="showAlertsList"
-        android:text="VER TODAS"
-        app:layout_constraintBottom_toTopOf="@+id/driveRobotButton"
-        app:layout_constraintStart_toStartOf="@+id/driveRobotButton" />
+        android:paddingVertical="@dimen/activity_horizontal_margin"
+        android:text="@string/action_see_alerts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/driveRobotButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/driveRobotButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
+        android:layout_width="0dp"
+        android:layout_height="86dp"
+        android:background="@color/icons"
+        android:drawableTop="@drawable/ic_videocam_black"
+        android:elevation="@dimen/activity_horizontal_margin"
         android:onClick="showRobotVision"
-        android:text="CONDUCIR ROBOT"
+        android:paddingVertical="@dimen/activity_horizontal_margin"
+        android:text="@string/action_drive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/seeAllButton" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lastAlerts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/seeAllButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>
