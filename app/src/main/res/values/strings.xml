@@ -13,4 +13,24 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    !-- Menu options -->
+    <string name="menu_account">Cuenta</string>
+    <string name="menu_info">Información</string>
+    <string name="menu_sing_off">Cerrar sesión</string>
+
+    <string name="last_alerts">Últimas alertas</string>
+    <string name="action_see_alerts">Ver alertas</string>
+    <string name="action_drive">Usar robot</string>
+
+    <string name="alerts_list">Lista de alertas</string>
+    <string name="search">Buscar</string>
+    <string name="action_search">Buscar</string>
+
+    <string name="vision">Visión del robot</string>
+    <string name="action_turn_left">Girar a Izquierda</string>
+    <string name="action_turn_right">Girar a Derecha</string>
+    <string name="action_move_on">Avanzar</string>
+    <string name="action_go_back">Retroceder</string>
+    <string name="title_activity_prueba">Prueba</string>
 </resources>
