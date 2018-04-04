@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import me.readeveloper.alarmdroid.handlers.LogoutHandler;
+import me.readeveloper.alarmdroid.models.AlertItem;
 
 public class AlertsListActivity extends AppCompatActivity {
 

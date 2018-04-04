@@ -1,11 +1,8 @@
 package me.readeveloper.alarmdroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -16,6 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import me.readeveloper.alarmdroid.handlers.LogoutHandler;
+import me.readeveloper.alarmdroid.models.LastAlertItem;
 
 public class MainActivity extends AppCompatActivity {
 
