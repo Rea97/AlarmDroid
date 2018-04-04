@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import me.readeveloper.alarmdroid.LoginScreenActivity;
 
-public class LogoutHandler implements View.OnClickListener {
+public class LogoutHandler {
     private final String SP_FILENAME = "alarmdroid.xml";
     private String logoutErrorMessage = "Ha ocurrido un problema al cerrar sesión.";
     private Context context;
@@ -17,8 +17,7 @@ public class LogoutHandler implements View.OnClickListener {
         this.context = context;
     }
 
-    @Override
-    public void onClick(View view) {
+    public void logout() {
         SharedPreferences sharedPreferences = this.context.getSharedPreferences(
                 SP_FILENAME, Context.MODE_PRIVATE
         );

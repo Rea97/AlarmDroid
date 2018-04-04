@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import me.readeveloper.alarmdroid.handlers.LogoutHandler;
+
 public class DriverActivity extends AppCompatActivity {
 
     @Override
@@ -28,7 +30,8 @@ public class DriverActivity extends AppCompatActivity {
         } else if (id==R.id.op2) {
             Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op3) {
-            Toast.makeText(this, "Cerrar sesión", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
+            new LogoutHandler(this).logout();
         } else {
             Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
         }
