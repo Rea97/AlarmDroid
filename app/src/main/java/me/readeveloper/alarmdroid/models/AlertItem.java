@@ -4,7 +4,7 @@ package me.readeveloper.alarmdroid.models;
  * Created by HP Gamer on 08/03/2018.
  */
 
-public class AlertItem {
+public class AlertItem extends Model {
     private String tipo;
     private String mensaje;
     private String zona;

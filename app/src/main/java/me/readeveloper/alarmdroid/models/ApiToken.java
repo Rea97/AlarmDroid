@@ -1,6 +1,6 @@
 package me.readeveloper.alarmdroid.models;
 
-public class ApiToken {
+public class ApiToken extends Model {
     private String api_token = null;
 
     public String getApi_token() {
