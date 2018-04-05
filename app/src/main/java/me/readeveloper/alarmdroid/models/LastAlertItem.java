@@ -4,7 +4,7 @@ package me.readeveloper.alarmdroid.models;
  * Created by HP Gamer on 07/03/2018.
  */
 
-public class LastAlertItem extends Model {
+public class LastAlertItem {
     private String tipo;
     private String fecha;
     private String desc;
