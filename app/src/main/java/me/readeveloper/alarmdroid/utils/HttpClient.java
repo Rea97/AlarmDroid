@@ -5,15 +5,14 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import me.readeveloper.alarmdroid.LoginScreenActivity;
-
-public class HttpRequestClient {
+public class HttpClient {
     private Context context;
     private String URL;
     private HashMap<String, String> parameters = new HashMap<>();
@@ -21,19 +20,19 @@ public class HttpRequestClient {
 
     private RequestQueue queue;
 
-    public HttpRequestClient(String url, Context context) {
+    public HttpClient(String url, Context context) {
         this.URL = url;
         this.context = context;
 
         this.queue = Volley.newRequestQueue(this.context);
     }
 
-    public HttpRequestClient setHeader(String key, String value) {
+    public HttpClient setHeader(String key, String value) {
         this.httpHeaders.put(key, value);
         return this;
     }
 
-    public HttpRequestClient setParameter(String key, String value) {
+    public HttpClient setParameter(String key, String value) {
         this.parameters.put(key, value);
         return this;
     }
@@ -48,6 +47,15 @@ public class HttpRequestClient {
 
     public void post(Response.Listener responseHandler, Response.ErrorListener errorResponseHandler) {
         this.httpRequest(Request.Method.POST, responseHandler, errorResponseHandler);
+    }
+
+    public void post(Response.Listener responseHandler) {
+        this.httpRequest(Request.Method.POST, responseHandler, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
 
     public void get(Response.Listener responseHandler, Response.ErrorListener errorResponseHandler) {

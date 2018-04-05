@@ -11,18 +11,11 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.StringRequest;
-
-import java.util.Map;
-import java.util.HashMap;
 
 import me.readeveloper.alarmdroid.models.ApiToken;
-import me.readeveloper.alarmdroid.utils.HttpRequestClient;
+import me.readeveloper.alarmdroid.utils.HttpClient;
 
 public class LoginScreenActivity extends AppCompatActivity {
     private final String SP_FILENAME = "alarmdroid.xml";
@@ -50,7 +43,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         final String email = emailText.getText().toString();
         final String password = passwordText.getText().toString();
 
-        HttpRequestClient http = new HttpRequestClient(this.LOGIN_URL, this);
+        HttpClient http = new HttpClient(this.LOGIN_URL, this);
         http.setHeader("Content-Type", "application/x-www-form-urlencoded")
                 .setHeader("Accept", "application/json")
                 .setParameter("email", email)
