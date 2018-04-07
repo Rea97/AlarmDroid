@@ -5,6 +5,7 @@ public class Alert extends Model {
     private Robot robot;
     private String type;
     private String message;
+    private String zone;
     private String created_at;
 
     public int getId() {
@@ -37,6 +38,14 @@ public class Alert extends Model {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getZone() {
+        return this.zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
     }
 
     public String getCreated_at() {
