@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import me.readeveloper.alarmdroid.handlers.LogoutHandler;
+import me.readeveloper.alarmdroid.utils.Auth;
 
 public class DriverActivity extends AppCompatActivity {
 
@@ -14,6 +14,15 @@ public class DriverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!Auth.check(this)) {
+            Auth.redirectToLogin(this);
+        }
     }
 
     @Override
@@ -31,7 +40,7 @@ public class DriverActivity extends AppCompatActivity {
             Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
-            new LogoutHandler(this).logout();
+            Auth.logout(this);
         } else {
             Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
         }

@@ -1,4 +1,4 @@
-package me.readeveloper.alarmdroid;
+package me.readeveloper.alarmdroid.models;
 
 /**
  * Created by HP Gamer on 07/03/2018.

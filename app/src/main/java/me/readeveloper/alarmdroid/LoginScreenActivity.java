@@ -11,17 +11,11 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.StringRequest;
-
-import java.util.Map;
-import java.util.HashMap;
 
 import me.readeveloper.alarmdroid.models.ApiToken;
+import me.readeveloper.alarmdroid.utils.HttpClient;
 
 public class LoginScreenActivity extends AppCompatActivity {
     private final String SP_FILENAME = "alarmdroid.xml";
@@ -49,28 +43,13 @@ public class LoginScreenActivity extends AppCompatActivity {
         final String email = emailText.getText().toString();
         final String password = passwordText.getText().toString();
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.POST, LOGIN_URL, new LoginResponseHandler(), new LoginErrorHandler()
-        ) {
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("password", password);
-                return params;
-            }
+        HttpClient http = new HttpClient(this.LOGIN_URL, this);
+        http.setHeader("Content-Type", "application/x-www-form-urlencoded")
+                .setHeader("Accept", "application/json")
+                .setParameter("email", email)
+                .setParameter("password", password);
 
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("Content-Type","application/x-www-form-urlencoded");
-                params.put("Accept","application/json");
-                return params;
-            }
-        };
-
-        queue.add(stringRequest);
+        http.post(new LoginResponseHandler(), new LoginErrorHandler());
     }
 
     private void dispatchMainActivityIntent() {

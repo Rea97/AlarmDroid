@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import me.readeveloper.alarmdroid.models.LastAlertItem;
+
 /**
  * Created by HP Gamer on 07/03/2018.
  */
