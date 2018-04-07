@@ -17,6 +17,15 @@ public class DriverActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!Auth.check(this)) {
+            Auth.redirectToLogin(this);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.appmenu, menu);
         return super.onCreateOptionsMenu(menu);

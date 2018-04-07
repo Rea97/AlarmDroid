@@ -33,6 +33,9 @@ public class AlertsListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (!Auth.check(this)) {
+            Auth.redirectToLogin(this);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alerts_list);
         recycler = findViewById(R.id.Alerts);
@@ -42,6 +45,15 @@ public class AlertsListActivity extends AppCompatActivity {
         listDatos = new ArrayList<AlertItem>();
 
         this.fillList();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!Auth.check(this)) {
+            Auth.redirectToLogin(this);
+        }
     }
 
     private void fillList() {

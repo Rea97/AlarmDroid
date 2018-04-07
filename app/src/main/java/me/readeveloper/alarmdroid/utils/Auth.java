@@ -30,11 +30,16 @@ public class Auth {
         editor.remove(API_TOKEN_FIELD);
 
         if (editor.commit()) {
-            Intent intent = new Intent(context, LoginScreenActivity.class);
-            context.startActivity(intent);
+            redirectToLogin(context);
             return;
         }
 
         Toast.makeText(context, LOGOUT_ERROR_MESSAGE, Toast.LENGTH_LONG).show();
+    }
+
+    public static void redirectToLogin(Context context) {
+        Intent intent = new Intent(context, LoginScreenActivity.class);
+
+        context.startActivity(intent);
     }
 }

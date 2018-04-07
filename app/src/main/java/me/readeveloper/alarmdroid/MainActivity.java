@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (!Auth.check(this)) {
-            //redirect to login
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.lastAlerts);
@@ -75,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("ErrorResponse", "Error on request.", error);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!Auth.check(this)) {
+            Auth.redirectToLogin(this);
+        }
     }
 
     @Override
