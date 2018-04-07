@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import me.readeveloper.alarmdroid.handlers.LogoutHandler;
 import me.readeveloper.alarmdroid.models.AlertItem;
+import me.readeveloper.alarmdroid.utils.Auth;
 
 public class AlertsListActivity extends AppCompatActivity {
 
@@ -57,7 +57,7 @@ public class AlertsListActivity extends AppCompatActivity {
             Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
-            new LogoutHandler(this).logout();
+            Auth.logout(this);
         } else {
             Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
         }

@@ -1,8 +1,6 @@
 package me.readeveloper.alarmdroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,7 +19,6 @@ import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 
-import me.readeveloper.alarmdroid.handlers.LogoutHandler;
 import me.readeveloper.alarmdroid.models.Alert;
 import me.readeveloper.alarmdroid.models.AlertsDataObject;
 import me.readeveloper.alarmdroid.models.LastAlertItem;
@@ -48,15 +45,10 @@ public class MainActivity extends AppCompatActivity {
         this.fillList();
     }
 
-    private String getApiToken() {
-        SharedPreferences sharedPreferences = getSharedPreferences("alarmdroid.xml", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("api_token", null);
-    }
-
     private void fillList() {
         HttpClient http = new HttpClient("https://alarmdroid.herokuapp.com/api/alerts?limit=5", this);
 
-        http.setHeader("Authorization", "Bearer " + this.getApiToken())
+        http.setHeader("Authorization", "Bearer " + Auth.getApiTokenFromSharedPreferences(this))
                 .setHeader("Accept", "application/json");
 
         http.get(new Response.Listener() {
@@ -100,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
-            new LogoutHandler(this).logout();
+            Auth.logout(this);
         } else {
             Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
         }
