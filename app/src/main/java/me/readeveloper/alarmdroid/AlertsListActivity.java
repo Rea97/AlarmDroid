@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -44,6 +46,49 @@ public class AlertsListActivity extends AppCompatActivity {
 
     private void fillList() {
         HttpClient http = new HttpClient("https://alarmdroid.herokuapp.com/api/alerts", this);
+
+        http.setHeader("Authorization", "Bearer " + Auth.getApiTokenFromSharedPreferences(this))
+                .setHeader("Accept", "application/json");
+
+        http.get(new Response.Listener() {
+            @Override
+            public void onResponse(Object response) {
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonObject jsonResponse = parser.parse(response.toString()).getAsJsonObject();
+                AlertsDataObject data = gson.fromJson(jsonResponse, AlertsDataObject.class);
+
+                for (Alert alert : data.getData()) {
+                    listDatos.add(
+                            new AlertItem(
+                                    alert.getType(),
+                                    alert.getMessage(),
+                                    alert.getZone(),
+                                    alert.getCreated_at()
+                            )
+                    );
+                }
+                AdapterAllAlerts adapter = new AdapterAllAlerts(listDatos);
+                recycler.setAdapter(adapter);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ErrorResponse", "Error on request.", error);
+            }
+        });
+    }
+
+    public void searchAlerts(View view) {
+        listDatos.clear();
+
+        EditText searchField = findViewById(R.id.searchText);
+        String search = searchField.getText().toString();
+
+        HttpClient http = new HttpClient(
+                "https://alarmdroid.herokuapp.com/api/alerts?search=" + search,
+                this
+        );
 
         http.setHeader("Authorization", "Bearer " + Auth.getApiTokenFromSharedPreferences(this))
                 .setHeader("Accept", "application/json");
