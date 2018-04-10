@@ -5,14 +5,24 @@ package me.readeveloper.alarmdroid.models;
  */
 
 public class LastAlertItem {
+    private int id;
     private String tipo;
     private String fecha;
     private String desc;
 
-    public LastAlertItem(String tipo, String fecha, String desc) {
+    public LastAlertItem(int id, String tipo, String fecha, String desc) {
+        this.id = id;
         this.tipo = tipo;
         this.fecha = fecha;
         this.desc = desc;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTipo() {

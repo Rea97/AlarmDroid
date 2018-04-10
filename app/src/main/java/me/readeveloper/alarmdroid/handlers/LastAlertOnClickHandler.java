@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 import me.readeveloper.alarmdroid.AlertDetailActivity;
 import me.readeveloper.alarmdroid.models.AlertItem;
+import me.readeveloper.alarmdroid.models.LastAlertItem;
 
-public class AlertOnClickHandler implements View.OnClickListener {
-    private ArrayList<AlertItem> alerts;
+public class LastAlertOnClickHandler implements View.OnClickListener {
+    private ArrayList<LastAlertItem> alerts;
     private int position;
 
-    public AlertOnClickHandler(ArrayList<AlertItem> alerts, int position) {
+    public LastAlertOnClickHandler(ArrayList<LastAlertItem> alerts, int position) {
         this.alerts = alerts;
         this.position = position;
     }

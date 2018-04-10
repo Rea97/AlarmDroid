@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Alert alert : data.getData()) {
                     listDatos.add(
                             new LastAlertItem(
-                                    alert.getType(), alert.getCreated_at(), alert.getMessage()
+                                    alert.getId(), alert.getType(), alert.getCreated_at(), alert.getMessage()
                             )
                     );
                 }
