@@ -1,5 +1,7 @@
 package me.readeveloper.alarmdroid;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import me.readeveloper.alarmdroid.handlers.AlertOnClickHandler;
 import me.readeveloper.alarmdroid.models.AlertItem;
 
 /**
@@ -26,7 +29,13 @@ public class AdapterAllAlerts extends RecyclerView.Adapter<AdapterAllAlerts.View
     }
 
     @Override
-    public void onBindViewHolder(AdapterAllAlerts.ViewHolderDatos holder, int position) {
+    public void onBindViewHolder(AdapterAllAlerts.ViewHolderDatos holder, final int position) {
+        AlertOnClickHandler handler = new AlertOnClickHandler(this.Alerts, position);
+        holder.tipo.setOnClickListener(handler);
+        holder.mensaje.setOnClickListener(handler);
+        holder.zona.setOnClickListener(handler);
+        holder.fecha.setOnClickListener(handler);
+
         holder.tipo.setText(Alerts.get(position).getTipo());
         holder.mensaje.setText(Alerts.get(position).getMensaje());
         holder.zona.setText(Alerts.get(position).getZona());
