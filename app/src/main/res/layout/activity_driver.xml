@@ -38,14 +38,14 @@
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="3dp"
         android:layout_marginTop="8dp"
         android:background="@color/driver_controls"
         android:contentDescription="@string/action_turn_left"
+        android:onClick="setStatus"
         app:layout_constraintBottom_toBottomOf="@+id/ControlAtras"
         app:layout_constraintEnd_toStartOf="@+id/ControlAvanzar"
         app:layout_constraintTop_toTopOf="@+id/ControlAvanzar"
-        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintVertical_bias="0.635"
         app:srcCompat="@drawable/ic_keyboard_arrow_left_black" />
 
     <ImageButton
@@ -54,26 +54,45 @@
         android:layout_height="86dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:background="@color/driver_controls"
         android:contentDescription="@string/action_move_on"
+        android:onClick="setStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/webView"
         app:srcCompat="@drawable/ic_keyboard_arrow_up_black" />
 
     <ImageButton
+        android:id="@+id/ControlDetener"
+        android:layout_width="86dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/driver_controls"
+        android:contentDescription="@string/action_stop"
+        android:onClick="setStatus"
+        app:layout_constraintBottom_toTopOf="@+id/ControlAvanzar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webView"
+        app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+    <ImageButton
         android:id="@+id/ControlDer"
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="3dp"
         android:layout_marginTop="8dp"
         android:background="@color/driver_controls"
         android:contentDescription="@string/action_turn_right"
+        android:onClick="setStatus"
         app:layout_constraintBottom_toBottomOf="@+id/ControlAtras"
         app:layout_constraintStart_toEndOf="@+id/ControlAvanzar"
         app:layout_constraintTop_toTopOf="@+id/ControlAvanzar"
+        app:layout_constraintVertical_bias="0.527"
         app:srcCompat="@drawable/ic_keyboard_arrow_right_black" />
 
     <ImageButton
@@ -82,9 +101,10 @@
         android:layout_height="86dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="12dp"
         android:background="@color/driver_controls"
         android:contentDescription="@string/action_go_back"
+        android:onClick="setStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ControlAvanzar"
