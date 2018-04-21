@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import me.readeveloper.alarmdroid.handlers.LastAlertOnClickHandler;
 import me.readeveloper.alarmdroid.models.LastAlertItem;
 
 /**
@@ -32,6 +33,11 @@ public class AdapterLastAlerts extends RecyclerView.Adapter<AdapterLastAlerts.Vi
 
     @Override
     public void onBindViewHolder(ViewHolderDatos holder, int position) {
+        LastAlertOnClickHandler handler = new LastAlertOnClickHandler(this.listAlerts, position);
+        holder.tipo.setOnClickListener(handler);
+        holder.fecha.setOnClickListener(handler);
+        holder.desc.setOnClickListener(handler);
+
         holder.tipo.setText(listAlerts.get(position).getTipo());
         holder.fecha.setText(listAlerts.get(position).getFecha());
         holder.desc.setText(listAlerts.get(position).getDesc());

@@ -5,16 +5,26 @@ package me.readeveloper.alarmdroid.models;
  */
 
 public class AlertItem {
+    private int id;
     private String tipo;
     private String mensaje;
     private String zona;
     private String fecha;
 
-    public AlertItem(String tipo, String mensaje, String zona, String fecha) {
+    public AlertItem(int id, String tipo, String mensaje, String zona, String fecha) {
+        this.id = id;
         this.tipo = tipo;
         this.mensaje = mensaje;
         this.zona = zona;
         this.fecha = fecha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTipo() {

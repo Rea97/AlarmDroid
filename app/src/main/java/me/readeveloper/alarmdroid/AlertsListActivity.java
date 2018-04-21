@@ -73,6 +73,7 @@ public class AlertsListActivity extends AppCompatActivity {
                 for (Alert alert : data.getData()) {
                     listDatos.add(
                             new AlertItem(
+                                    alert.getId(),
                                     alert.getType(),
                                     alert.getMessage(),
                                     alert.getZone(),
@@ -116,6 +117,7 @@ public class AlertsListActivity extends AppCompatActivity {
                 for (Alert alert : data.getData()) {
                     listDatos.add(
                             new AlertItem(
+                                    alert.getId(),
                                     alert.getType(),
                                     alert.getMessage(),
                                     alert.getZone(),
