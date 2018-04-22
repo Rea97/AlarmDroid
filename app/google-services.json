@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "683652168732",
+    "firebase_url": "https://alarmdroid-ba748.firebaseio.com",
+    "project_id": "alarmdroid-ba748",
+    "storage_bucket": "alarmdroid-ba748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683652168732:android:2e58e36d37b39b0e",
+        "android_client_info": {
+          "package_name": "me.readeveloper.alarmdroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683652168732-i5eagqpss0p9u6gilf7lo9an2ht01r8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuikcyCeZ97B7CZ-h2bW3KTg-Dzq_7xkg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
