@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.pusher.pushnotifications.PushNotifications;
 
 import java.util.ArrayList;
 
@@ -36,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.lastAlerts);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        int authId = Auth.getAuthIdFromSharedPreferences(this);
         //recycler.setLayoutManager(new GridLayoutManager(this,3));
         listDatos = new ArrayList<LastAlertItem>();
 
         this.fillList();
+
+        PushNotifications.start(getApplicationContext(), "ec0303c1-5d35-4a2e-965e-b8ab64f90516");
+        PushNotifications.subscribe(String.format("user-alerts-%d", authId));
     }
 
     private void fillList() {
