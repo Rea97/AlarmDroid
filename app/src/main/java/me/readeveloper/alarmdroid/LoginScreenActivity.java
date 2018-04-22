@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import me.readeveloper.alarmdroid.models.ApiToken;
+import me.readeveloper.alarmdroid.models.SuccessfulLoginResponse;
 import me.readeveloper.alarmdroid.utils.HttpClient;
 
 public class LoginScreenActivity extends AppCompatActivity {
@@ -57,11 +57,12 @@ public class LoginScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void storeApiToken(String apiToken) {
+    private void storeAuthData(String apiToken, int authId) {
         SharedPreferences sharedPreferences = getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("api_token", apiToken);
+        editor.putInt("auth_id", authId);
 
         editor.apply();
     }
@@ -71,10 +72,10 @@ public class LoginScreenActivity extends AppCompatActivity {
         public void onResponse(String response) {
             Gson gson = new Gson();
 
-            ApiToken apiToken = gson.fromJson(response, ApiToken.class);
+            SuccessfulLoginResponse loginResponse = gson.fromJson(response, SuccessfulLoginResponse.class);
 
-            if (apiToken.toString() != null) {
-                storeApiToken(apiToken.toString());
+            if (loginResponse.isValid()) {
+                storeAuthData(loginResponse.getApi_token(), loginResponse.getId());
                 dispatchMainActivityIntent();
             }
         }
