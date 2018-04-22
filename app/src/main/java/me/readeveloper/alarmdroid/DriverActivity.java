@@ -15,6 +15,7 @@ import me.readeveloper.alarmdroid.utils.Auth;
 import me.readeveloper.alarmdroid.utils.HttpClient;
 
 public class DriverActivity extends AppCompatActivity {
+    private String status = "detenido";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,15 @@ public class DriverActivity extends AppCompatActivity {
 
         if (!Auth.check(this)) {
             Auth.redirectToLogin(this);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (!this.status.equals("detenido")) {
+            this.sendStatus("detenido");
         }
     }
 
@@ -54,32 +64,28 @@ public class DriverActivity extends AppCompatActivity {
     }
 
     public void setStatus(View view) {
-        String status;
         switch (view.getId()) {
             case R.id.ControlAvanzar:
-                status = "adelante";
+                this.status = "adelante";
                 break;
             case R.id.ControlAtras:
-                status = "atras";
+                this.status = "atras";
                 break;
             case R.id.ControlDer:
-                status = "derecha";
+                this.status = "derecha";
                 break;
             case R.id.ControlIzq:
-                status = "izquierda";
+                this.status = "izquierda";
                 break;
             case R.id.ControlDetener:
-                status = "detenido";
-                break;
-            default:
-                status = "detenido";
+                this.status = "detenido";
                 break;
         }
 
-        this.sendStatus(status);
+        this.sendStatus(this.status);
     }
 
-    private void sendStatus(String status) {
+    private void sendStatus(final String status) {
         HttpClient http = new HttpClient("https://alarmdroid.herokuapp.com/api/users/robots/status", this);
         http.setHeader("Authorization", "Bearer " + Auth.getApiTokenFromSharedPreferences(this))
                 .setHeader("Content-Type", "application/x-www-form-urlencoded")
@@ -91,7 +97,7 @@ public class DriverActivity extends AppCompatActivity {
             public void onResponse(Object response) {
                 Toast.makeText(
                         DriverActivity.this,
-                        "Estatus del robot ha cambiado.",
+                        "Estatus del robot ha cambiado a " + status,
                         Toast.LENGTH_SHORT
                 ).show();
             }
