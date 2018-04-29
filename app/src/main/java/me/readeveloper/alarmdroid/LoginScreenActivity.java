@@ -57,12 +57,13 @@ public class LoginScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void storeAuthData(String apiToken, int authId) {
+    private void storeAuthData(String apiToken, int authId, int robotId) {
         SharedPreferences sharedPreferences = getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("api_token", apiToken);
         editor.putInt("auth_id", authId);
+        editor.putInt("robot_id", robotId);
 
         editor.apply();
     }
@@ -75,7 +76,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             SuccessfulLoginResponse loginResponse = gson.fromJson(response, SuccessfulLoginResponse.class);
 
             if (loginResponse.isValid()) {
-                storeAuthData(loginResponse.getApi_token(), loginResponse.getId());
+                storeAuthData(loginResponse.getApi_token(), loginResponse.getId(), loginResponse.getRobot_id());
                 dispatchMainActivityIntent();
             }
         }

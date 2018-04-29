@@ -3,6 +3,7 @@ package me.readeveloper.alarmdroid.models;
 public class SuccessfulLoginResponse extends Model {
     private String api_token = null;
     private int id;
+    private int robot_id;
 
     public String getApi_token() {
         return this.api_token;
@@ -18,6 +19,14 @@ public class SuccessfulLoginResponse extends Model {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getRobot_id() {
+        return this.robot_id;
+    }
+
+    public void setRobot_id(int robot_id) {
+        this.robot_id = robot_id;
     }
 
     public boolean isValid() {
