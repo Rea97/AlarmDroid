@@ -91,7 +91,7 @@ public class AccountActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.op2) {
-            Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AboutActivity.class));
         } else if (id == R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
             Auth.logout(this);

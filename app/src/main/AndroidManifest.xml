@@ -28,7 +28,8 @@
         <activity android:name=".DriverActivity" />
         <activity android:name=".AlertsListActivity" />
         <activity android:name=".AlertDetailActivity" />
-        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".AccountActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

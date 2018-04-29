@@ -1,5 +1,6 @@
 package me.readeveloper.alarmdroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,7 +50,7 @@ public class AlertDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.op2:
-                Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
             case R.id.op3:
                 Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();

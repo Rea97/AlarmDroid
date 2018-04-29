@@ -34,4 +34,13 @@
     <string name="action_stop">Detener</string>
     <string name="action_go_back">Retroceder</string>
     <string name="title_activity_prueba">Prueba</string>
+
+    <string name="about_title">Acerca de AlarmDroid</string>
+    <string name="about_content">
+        AlarmDroid es un proyecto destinado a la monitorización de posibles peligros para personal de
+        zonas industriales, esto mediante el uso de un robot con sensores de fuego, gas, entre otros
+        el cual estará en constante monitoreo de niveles que puedan representar un daño. Ante tales
+        peligros será capaz de enviar alertas a un servicio web, dichas alertas serán mostradas en
+        esta aplicación.
+    </string>
 </resources>

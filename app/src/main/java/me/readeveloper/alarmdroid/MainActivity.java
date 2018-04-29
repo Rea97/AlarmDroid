@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, AccountActivity.class));
             Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op2) {
-            Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AboutActivity.class));
         } else if (id==R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
             Auth.logout(this);

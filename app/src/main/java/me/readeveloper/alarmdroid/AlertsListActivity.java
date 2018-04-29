@@ -1,5 +1,6 @@
 package me.readeveloper.alarmdroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -148,7 +149,7 @@ public class AlertsListActivity extends AppCompatActivity {
         if (id==R.id.op1) {
             Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op2) {
-            Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AboutActivity.class));
         } else if (id==R.id.op3) {
             Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
             Auth.logout(this);
