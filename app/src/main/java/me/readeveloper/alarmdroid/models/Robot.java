@@ -2,9 +2,10 @@ package me.readeveloper.alarmdroid.models;
 
 public class Robot extends Model {
     private int id;
-    private int user_id;
+    private User user;
     private String model;
     private String zone;
+    private String status;
     private String created_at;
 
     public int getId() {
@@ -15,12 +16,12 @@ public class Robot extends Model {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return this.user_id;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getModel() {
@@ -37,6 +38,14 @@ public class Robot extends Model {
 
     public void setZone(String zone) {
         this.zone = zone;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getCreated_at() {

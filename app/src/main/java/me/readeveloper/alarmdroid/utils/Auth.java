@@ -12,6 +12,7 @@ public class Auth {
     private final static String LOGOUT_ERROR_MESSAGE = "Ha ocurrido un problema al cerrar sesión.";
     private final static String API_TOKEN_FIELD = "api_token";
     private final static String AUTH_ID_FIELD = "auth_id";
+    private final static String ROBOT_ID_FIELD = "robot_id";
 
     public static boolean check(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE);
@@ -26,6 +27,11 @@ public class Auth {
     public static int getAuthIdFromSharedPreferences(Context context) {
         return context.getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE)
                 .getInt(AUTH_ID_FIELD, 0);
+    }
+
+    public static int getRobotIdFromSharedPreferences(Context context) {
+        return context.getSharedPreferences(SP_FILENAME, Context.MODE_PRIVATE)
+                .getInt(ROBOT_ID_FIELD, 0);
     }
 
     public static void logout(Context context) {
