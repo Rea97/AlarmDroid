@@ -3,20 +3,17 @@ package me.readeveloper.alarmdroid;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import org.jetbrains.annotations.NotNull;
 
 import me.readeveloper.alarmdroid.models.Robot;
 import me.readeveloper.alarmdroid.utils.Auth;
@@ -81,5 +78,26 @@ public class AccountActivity extends AppCompatActivity {
 
     public void driveRobot(View view) {
         startActivity(new Intent(this, DriverActivity.class));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.appmenu, menu);
+        menu.removeItem(R.id.op1);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.op2) {
+            Toast.makeText(this, "Información", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.op3) {
+            Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
+            Auth.logout(this);
+        } else {
+            Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
