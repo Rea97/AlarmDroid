@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillList() {
-        HttpClient http = new HttpClient("https://alarmdroid.herokuapp.com/api/alerts?limit=5", this);
+        HttpClient http = new HttpClient("https://alarmdroid.herokuapp.com/api/alerts?limit=8", this);
 
         http.setHeader("Authorization", "Bearer " + Auth.getApiTokenFromSharedPreferences(this))
                 .setHeader("Accept", "application/json");

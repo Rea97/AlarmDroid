@@ -1,12 +1,17 @@
 package me.readeveloper.alarmdroid;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.github.curioustechizen.ago.RelativeTimeTextView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import me.readeveloper.alarmdroid.handlers.LastAlertOnClickHandler;
 import me.readeveloper.alarmdroid.models.LastAlertItem;
@@ -33,13 +38,19 @@ public class AdapterLastAlerts extends RecyclerView.Adapter<AdapterLastAlerts.Vi
 
     @Override
     public void onBindViewHolder(ViewHolderDatos holder, int position) {
+        Date alertDate = new Date();
         LastAlertOnClickHandler handler = new LastAlertOnClickHandler(this.listAlerts, position);
         holder.tipo.setOnClickListener(handler);
         holder.fecha.setOnClickListener(handler);
         holder.desc.setOnClickListener(handler);
 
+        try {
+            alertDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(listAlerts.get(position).getFecha());
+        } catch (Exception e) {
+            Log.e("DateParseError", "Error al parsear fecha", e);
+        }
         holder.tipo.setText(listAlerts.get(position).getTipo());
-        holder.fecha.setText(listAlerts.get(position).getFecha());
+        holder.fecha.setReferenceTime(alertDate.getTime());
         holder.desc.setText(listAlerts.get(position).getDesc());
     }
 
@@ -51,12 +62,13 @@ public class AdapterLastAlerts extends RecyclerView.Adapter<AdapterLastAlerts.Vi
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
         //Referencia a los componentes-datos que se mostraran en la lista
-        TextView tipo, fecha, desc;
+        TextView tipo, desc;
+        RelativeTimeTextView fecha;
 
         public ViewHolderDatos(View itemView) {
             super(itemView);
             tipo= (TextView) itemView.findViewById(R.id.LastAlertsTipo);
-            fecha= (TextView) itemView.findViewById(R.id.LastAlertsDate);
+            fecha= (RelativeTimeTextView) itemView.findViewById(R.id.LastAlertsDate);
             desc= (TextView) itemView.findViewById(R.id.LastAlertsDesc);
         }
 
