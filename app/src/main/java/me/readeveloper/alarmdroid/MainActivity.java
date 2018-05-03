@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -30,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<LastAlertItem> listDatos;
     RecyclerView recycler;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar = (ProgressBar) findViewById(R.id.lastAlertsProgressBar);
         recycler = findViewById(R.id.lastAlerts);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         int authId = Auth.getAuthIdFromSharedPreferences(this);
@@ -69,11 +72,13 @@ public class MainActivity extends AppCompatActivity {
                     );
                 }
                 AdapterLastAlerts adapter = new AdapterLastAlerts(listDatos);
+                progressBar.setVisibility(View.GONE);
                 recycler.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
                 Log.e("ErrorResponse", "Error on request.", error);
             }
         });
