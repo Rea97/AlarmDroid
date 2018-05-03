@@ -3,9 +3,9 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Entrar</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -19,10 +19,13 @@
     <string name="menu_info">Información</string>
     <string name="menu_sing_off">Cerrar sesión</string>
 
+    <string name="login">Inicia sesión</string>
     <string name="last_alerts">Últimas alertas</string>
     <string name="action_see_alerts">Ver alertas</string>
+    <string name="robot_vision">Visión del AlarmDroid</string>
     <string name="action_drive">Usar robot</string>
     <string name="alert_detail">Detalle de alerta</string>
+    <string name="my_alarmdroid">Mi AlarmDroid</string>
 
     <string name="alerts_list">Lista de alertas</string>
     <string name="search">Buscar</string>
