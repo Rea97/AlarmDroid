@@ -26,7 +26,7 @@
         </activity>
         <activity android:label="@string/last_alerts" android:name=".MainActivity" />
         <activity android:name=".DriverActivity" />
-        <activity android:name=".AlertsListActivity" />
+        <activity android:label="@string/alerts_list" android:name=".AlertsListActivity" />
         <activity android:label="@string/alert_detail" android:name=".AlertDetailActivity" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".AboutActivity"></activity>

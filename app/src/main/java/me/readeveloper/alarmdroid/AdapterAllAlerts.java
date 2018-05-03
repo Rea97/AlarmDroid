@@ -33,12 +33,10 @@ public class AdapterAllAlerts extends RecyclerView.Adapter<AdapterAllAlerts.View
         AlertOnClickHandler handler = new AlertOnClickHandler(this.Alerts, position);
         holder.tipo.setOnClickListener(handler);
         holder.mensaje.setOnClickListener(handler);
-        holder.zona.setOnClickListener(handler);
         holder.fecha.setOnClickListener(handler);
 
         holder.tipo.setText(Alerts.get(position).getTipo());
         holder.mensaje.setText(Alerts.get(position).getMensaje());
-        holder.zona.setText(Alerts.get(position).getZona());
         holder.fecha.setText(Alerts.get(position).getFecha());
     }
 
@@ -49,13 +47,12 @@ public class AdapterAllAlerts extends RecyclerView.Adapter<AdapterAllAlerts.View
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
-        TextView tipo, mensaje, zona, fecha;
+        TextView tipo, mensaje, fecha;
 
         public ViewHolderDatos(View itemView) {
             super(itemView);
             tipo= (TextView) itemView.findViewById(R.id.Tipo);
             mensaje= (TextView) itemView.findViewById(R.id.Mensaje);
-            zona= (TextView) itemView.findViewById(R.id.Zona);
             fecha= (TextView) itemView.findViewById(R.id.Fecha);
         }
     }

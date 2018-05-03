@@ -13,4 +13,5 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#bdbdbd</color>
     <color name="driver_controls">#d4d4d4</color>
+    <color name="transparent">#00ffffff</color>
 </resources>
