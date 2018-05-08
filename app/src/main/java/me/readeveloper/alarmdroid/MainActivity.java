@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id==R.id.op1) {
             startActivity(new Intent(this, AccountActivity.class));
-            Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
         } else if (id==R.id.op2) {
             startActivity(new Intent(this, AboutActivity.class));
         } else if (id==R.id.op3) {

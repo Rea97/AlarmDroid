@@ -37,33 +37,6 @@ public class AlertDetailActivity extends AppCompatActivity {
         this.fetchAlert(bundle.getInt("id"));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.appmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.op1:
-                Toast.makeText(this, "Cuenta", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.op2:
-                startActivity(new Intent(this, AboutActivity.class));
-                break;
-            case R.id.op3:
-                Toast.makeText(this, "Cerrando sesión", Toast.LENGTH_SHORT).show();
-                Auth.logout(this);
-                break;
-            default:
-                Toast.makeText(this, "Opcion no valida", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void setTextViews() {
         this.txtAlertType = findViewById(R.id.contentType);
         this.txtAlertDate = findViewById(R.id.contentDate);
