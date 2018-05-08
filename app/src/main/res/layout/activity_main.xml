@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.readeveloper.alarmdroid.MainActivity">
+
+    <ProgressBar
+        android:id="@+id/lastAlertsProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="196dp"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lastAlerts"
+        app:layout_constraintTop_toTopOf="@+id/lastAlerts" />
+
+    <Button
+        android:id="@+id/seeAllButton"
+        android:layout_width="0dp"
+        android:layout_height="86dp"
+        android:background="@color/icons"
+        android:drawableTop="@drawable/ic_error_outline_black"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:onClick="showAlertsList"
+        android:paddingVertical="@dimen/activity_horizontal_margin"
+        android:text="@string/action_see_alerts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/driveRobotButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/driveRobotButton"
+        android:layout_width="0dp"
+        android:layout_height="86dp"
+        android:background="@color/icons"
+        android:drawableTop="@drawable/ic_videocam_black"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:onClick="showRobotVision"
+        android:paddingVertical="@dimen/activity_horizontal_margin"
+        android:text="@string/action_drive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seeAllButton" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lastAlerts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/seeAllButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

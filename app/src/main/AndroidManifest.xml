@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:label="@string/last_alerts" android:name=".MainActivity" />
+        <activity android:label="@string/robot_vision" android:name=".DriverActivity" />
+        <activity android:label="@string/alerts_list" android:name=".AlertsListActivity" />
+        <activity android:label="@string/alert_detail" android:name=".AlertDetailActivity" />
+        <activity android:label="@string/my_alarmdroid" android:name=".AccountActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
