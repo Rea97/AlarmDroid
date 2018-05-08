@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,11 +18,14 @@ import me.readeveloper.alarmdroid.utils.HttpClient;
 
 public class DriverActivity extends AppCompatActivity {
     private String status = "detenido";
+    public WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+        this.webView = (WebView) findViewById(R.id.driverWebView);
+        this.webView.loadUrl("http://alarmdroid.mybrickcom.com/channel1");
     }
 
     @Override
