@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -24,7 +25,10 @@ public class DriverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
+
         this.webView = (WebView) findViewById(R.id.driverWebView);
+        this.webView.setWebViewClient(new WebViewClient());
+        this.webView.getSettings().setJavaScriptEnabled(true);
         this.webView.loadUrl("http://alarmdroid.mybrickcom.com/channel1");
     }
 
