@@ -30,7 +30,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:text="Oziel Martínez"
+                android:text="..."
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -73,7 +73,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:text="oziel@alarmdroid.com"
+                android:text="..."
                 android:textAlignment="center"
                 android:textSize="12sp"
                 android:textStyle="italic"
@@ -137,7 +137,7 @@
                 android:id="@+id/txtRobotZone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Producción"
+                android:text="..."
                 android:textSize="14sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
                 app:layout_constraintStart_toStartOf="@+id/txtRobotModel" />
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="JFK-1243"
+                android:text="..."
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
                 app:layout_constraintStart_toEndOf="@+id/textView8" />
 
@@ -180,7 +180,7 @@
                 android:id="@+id/txtRobotStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detenido"
+                android:text="..."
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
                 app:layout_constraintStart_toStartOf="@+id/txtRobotModel" />
 
