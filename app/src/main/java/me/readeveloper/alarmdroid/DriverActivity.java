@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.HttpAuthHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -27,9 +28,27 @@ public class DriverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_driver);
 
         this.webView = (WebView) findViewById(R.id.driverWebView);
-        this.webView.setWebViewClient(new WebViewClient());
+        this.webView.setWebViewClient(new WebViewClient(){
+            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
+                handler.proceed("admin", "admin");
+            }
+            public void onPageFinished(WebView view, String url) {
+                view.scrollTo(0,100);
+            }
+        });
+        webView.clearCache(true);
         this.webView.getSettings().setJavaScriptEnabled(true);
-        this.webView.loadUrl("http://alarmdroid.mybrickcom.com/channel1");
+        webView.getSettings().setBuiltInZoomControls(false);
+        webView.getSettings().setDisplayZoomControls(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setFocusable(false);
+        webView.setFocusableInTouchMode(false);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.setInitialScale(1);
+        webView.getScrollY();
+        //webView.setHttpAuthUsernamePassword("localhost","","admin","admin");
+        this.webView.loadUrl("http://192.168.0.8:8080/");
     }
 
     @Override
