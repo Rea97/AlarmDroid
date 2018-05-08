@@ -3,6 +3,7 @@ package me.readeveloper.alarmdroid;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.content.Intent;
 import android.widget.EditText;
@@ -20,11 +21,13 @@ import me.readeveloper.alarmdroid.utils.HttpClient;
 public class LoginScreenActivity extends AppCompatActivity {
     private final String SP_FILENAME = "alarmdroid.xml";
     private final String LOGIN_URL = "https://alarmdroid.herokuapp.com/api/login";
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+        this.progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
     }
 
     @Override
@@ -38,6 +41,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        this.progressBar.setVisibility(View.VISIBLE);
         EditText emailText = findViewById(R.id.emailText);
         EditText passwordText = findViewById(R.id.passwordText);
         final String email = emailText.getText().toString();
@@ -76,6 +80,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             SuccessfulLoginResponse loginResponse = gson.fromJson(response, SuccessfulLoginResponse.class);
 
             if (loginResponse.isValid()) {
+                progressBar.setVisibility(View.INVISIBLE);
                 storeAuthData(loginResponse.getApi_token(), loginResponse.getId(), loginResponse.getRobot_id());
                 dispatchMainActivityIntent();
             }
@@ -85,7 +90,9 @@ public class LoginScreenActivity extends AppCompatActivity {
     private class LoginErrorHandler implements Response.ErrorListener {
         @Override
         public void onErrorResponse(VolleyError error) {
+            progressBar.setVisibility(View.INVISIBLE);
             Log.e("ErrorResponse", "Error on request.", error);
+            // FIXME: parse error and get validation message, then display it
             Toast.makeText(
                     LoginScreenActivity.this,
                     "Credenciales inválidas.",

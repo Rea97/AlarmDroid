@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressBar.setVisibility(View.GONE);
+                // FIXME: parse error, then display it
+                Toast.makeText(MainActivity.this, "Servidor inactivo.", Toast.LENGTH_SHORT).show();
                 Log.e("ErrorResponse", "Error on request.", error);
             }
         });
