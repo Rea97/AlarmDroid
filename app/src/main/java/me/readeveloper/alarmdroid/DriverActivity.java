@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.HttpAuthHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -27,9 +29,36 @@ public class DriverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_driver);
 
         this.webView = (WebView) findViewById(R.id.driverWebView);
-        this.webView.setWebViewClient(new WebViewClient());
+        this.webView.setWebViewClient(new WebViewClient(){
+            /*public boolean shouldOverrideUrlLoading(WebView view, String url){
+                webView.loadUrl(url);
+                return false; // then it is not handled by default action
+            }*/
+            public void onReceivedHttpAuthRequest(WebView view, HttpAuthHandler handler, String host, String realm) {
+                handler.proceed("admin", "admin");
+            }
+            public void onPageFinished(WebView view, String url) {
+                view.scrollTo(0,100);
+            }
+        });
+        this.webView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                return (event.getAction() == MotionEvent.ACTION_MOVE);
+            }
+        });
+        webView.clearCache(true);
         this.webView.getSettings().setJavaScriptEnabled(true);
-        this.webView.loadUrl("http://alarmdroid.mybrickcom.com/channel1");
+        webView.getSettings().setBuiltInZoomControls(false);
+        webView.getSettings().setDisplayZoomControls(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setFocusable(false);
+        webView.setFocusableInTouchMode(false);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.setInitialScale(1);
+        webView.getScrollY();
+        //webView.setHttpAuthUsernamePassword("localhost","","admin","admin");
+        this.webView.loadUrl("http://alarmdroid.mybrickcom.com/");
     }
 
     @Override
